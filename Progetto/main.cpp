@@ -3,16 +3,8 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+using namespace std;
 
 int main(){ 
-
-    HashTable hash(5);
     
-    hash.displayHash();
-
-
-
-
-
-
 }
