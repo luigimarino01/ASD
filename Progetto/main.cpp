@@ -6,5 +6,10 @@
 using namespace std;
 
 int main(){ 
+   Grafo a;
+  
+
+
+
     
 }

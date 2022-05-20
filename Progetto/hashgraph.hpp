@@ -3,9 +3,5 @@
 class hashGraph{
     int dim;
     HashTable *table; 
-    
-
-
-
 };
 
