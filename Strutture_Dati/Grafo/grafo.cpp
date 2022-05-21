@@ -1,3 +1,4 @@
+#include <iostream>
 #include <vector>
 #include "linked_list.hpp"
 using namespace std;
@@ -5,38 +6,38 @@ using namespace std;
 class verticeGrafo
 {
     linkedList<verticeGrafo *> *adj;
-    int data;
+    int data = 0;
 
 public:
     verticeGrafo(int value)
     {
-        
+
         this->data = value;
         adj = new linkedList<verticeGrafo *>;
-        adj->insertNode(this);
 
     }
-    
 
-    void addEdgeVertice(verticeGrafo *y)
-    {
-        adj->insertNode(y);
-    }
+    void setData(int data){this->data = data;}
+    int getData(){return this->data;}
 
-    linkedList<verticeGrafo*> *getAdj(){
+
+    linkedList<verticeGrafo *> *getAdj(){
         return this->adj;
     }
-
     void printAdj()
     {
         Node<verticeGrafo *> *tmp;
-        tmp = adj->getHead()->getNext();
+        tmp = adj->getHead();
         cout << "Node {" << this->data << "}";
-        while (tmp->getData() != adj->getTail()->getData())
-        {
-            cout << "->[" << tmp->getData() << "]";
-            tmp = tmp->getNext();
+        while (tmp != nullptr) {
+
+                cout << "->[" << tmp->getData()->getData() << "]";
+                tmp = tmp->getNext();
+
         }
+
+            cout << "->END" << endl;
+
     }
 };
 
@@ -50,29 +51,79 @@ public:
     {
         listaVertici = new vector<verticeGrafo *>;
     }
-    void aggiungiVertice(verticeGrafo *vertice) {
-        listaVertici->push_back(vertice); 
-        
-        }
+    void aggiungiVertice(verticeGrafo *vertice) {listaVertici->push_back(vertice); }
     verticeGrafo *getVertice(int numeroVertice) { return listaVertici->at(numeroVertice);}
-    void printGrafo(){
-        int i = 0;
-       verticeGrafo *tmp = getVertice(i);
-       while (tmp!= nullptr){
-           tmp->printAdj();
-            i++;
-            tmp = getVertice(i);
+
+
+
+    bool aggiungiArco(verticeGrafo *x, verticeGrafo *y)
+    {
+        if (!trovaArco(x,y)) {
+            x->getAdj()->insertNode(y);
+            return true;
+
+        }
+        else
+            return false;
+
+    }
+
+    bool trovaArco(verticeGrafo *x,verticeGrafo *y)
+    {
+        linkedList<verticeGrafo*> *tmplist = x->getAdj();
+        Node<verticeGrafo *> *tmp = x->getAdj()->getHead();
+        if (x->getAdj()->isEmpty())
+            return false;
+
+        while (tmp->getData() != y){
+
+
+            if (tmp->getData() == tmplist->getTail()->getData()){
+                return false;
+            }
+            tmp->getNext()->getData();
+        }
+        return true;
+    }
+
+   bool rimuoviArco(verticeGrafo *x, verticeGrafo *y)
+   {
+       linkedList<verticeGrafo*> *tmplist = x->getAdj();
+       Node<verticeGrafo *> *tmp = x->getAdj()->getHead();
+       if (x->getAdj()->isEmpty())
+           return false;
+
+       while (tmp->getData() != y){
+
+
+           if (tmp->getData() == tmplist->getTail()->getData()){
+               return false;
+           }
+           tmp->getNext()->getData();
        }
+       tmplist->deleteNode(tmp);
+       return true;
+   }
+
+
+
+
+
+
+    void printGrafo(){
+        verticeGrafo *tmp;
+        for(int i = 0; i<listaVertici->size();i++){
+            tmp = getVertice(i);
+            tmp->printAdj();
+        }
+
+
+
     }
 };
-
 int main()
 {
     Grafo grafo;
     verticeGrafo verticeA(3);
     verticeGrafo verticeB(4);
-    grafo.aggiungiVertice(&verticeA);
-    grafo.aggiungiVertice(&verticeB);
-    grafo.printGrafo();
-
 }
