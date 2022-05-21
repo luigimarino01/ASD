@@ -126,4 +126,15 @@ int main()
     Grafo grafo;
     verticeGrafo verticeA(3);
     verticeGrafo verticeB(4);
+    verticeGrafo verticeC(10);
+
+    grafo.aggiungiVertice(&verticeA);
+    grafo.aggiungiVertice(&verticeB);
+    grafo.aggiungiVertice(&verticeC);
+
+    grafo.aggiungiArco(&verticeA,&verticeB);
+    grafo.rimuoviArco(&verticeA,&verticeB);
+
+    grafo.printGrafo();
+
 }
