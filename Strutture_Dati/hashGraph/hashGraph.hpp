@@ -26,8 +26,10 @@ public:
 		void hashDelete(verticeGrafo *vertice);
 		bool hashSearch(int key); 
 		void displayHash();
-        void addEdge(verticeGrafo *sorgente, verticeGrafo *destinazione);
-        void removeEdge(verticeGrafo *sorgente, verticeGrafo *destinazione);
+        void addEdge(verticeGrafo *i, verticeGrafo *j);
+        void removeEdge(verticeGrafo *i, verticeGrafo *j);
+        bool findEdge(verticeGrafo *i, verticeGrafo *j);
+        void DFS(verticeGrafo *sorgente);
         
 
 };
@@ -38,7 +40,7 @@ void hashGraph::hashInsert(int key, verticeGrafo *vertice){
 }
 
 bool hashGraph::hashSearch(int key){
-    if(!table[hashFunction(key)].isEmpty()){
+    if(!table[hashFunction(key)].isEmpty() && table[hashFunction(key)].getHead()->getNext() != nullptr){
         int index = hashFunction(key);
         Node<verticeGrafo*> *temp;
         temp = table[index].getHead()->getNext();
@@ -49,7 +51,6 @@ bool hashGraph::hashSearch(int key){
             temp = temp->getNext();
         }
         return false;
-        
     }
     return false;
 }
@@ -73,10 +74,9 @@ void hashGraph::displayHash(){
     Node<verticeGrafo*>* temp;
 
 	for (int i = 0; i < dim; i++) {
-		cout << i;
+        cout << i;
         if (table[i].isEmpty() == false) {
-            temp=table[i].getHead()->getNext();
-
+            temp=table[i].getHead();
             while(temp != table[i].getTail()){
                 cout << " --> " << temp->getData()->getData();
                 temp=temp->getNext();
@@ -84,5 +84,16 @@ void hashGraph::displayHash(){
         }
         cout << endl;
 	}
+}
+
+void hashGraph::addEdge(verticeGrafo *sorgente, verticeGrafo *destinazione){
+    sorgente->aggiungiArco(destinazione);
+}
+
+
+
+
+void hashGraph::removeEdge(verticeGrafo *sorgente, verticeGrafo *destinazione){
+    sorgente->rimuoviArco(destinazione);
 }
 

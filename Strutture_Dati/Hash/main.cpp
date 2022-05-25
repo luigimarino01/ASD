@@ -4,8 +4,9 @@ using namespace std;
 int main()
 {
 hashTable tavola(30);
-tavola.hashInsert(6);
-tavola.hashInsert(4);
-tavola.hashInsert(2);
+for (size_t i = 0; i < 5000; i++)
+{
+    tavola.hashInsert(i);
+}
 tavola.displayHash();
 }

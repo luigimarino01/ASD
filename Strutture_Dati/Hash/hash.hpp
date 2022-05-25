@@ -9,7 +9,15 @@ class hashTable{
 
 	public:
 	//COSTRUTTORE
-	hashTable(int dimensione){this->dim = dimensione; table = new linkedList<int>;}
+	hashTable(int dimensione){
+		this->dim = dimensione; 
+		table = new linkedList<int>[dimensione];
+		for (int i = 0; i < dimensione; i++)
+		{
+			hashInsert(i);
+		}
+		
+		}
 
 	//METODI PUBBLICI
 		void hashInsert(int key); 
@@ -23,7 +31,7 @@ void hashTable::hashInsert(int key){
 }
 
 bool hashTable::hashSearch(int key){
-	if(!table[hashFunction(key)].isEmpty()){
+	if(!table[hashFunction(key)].isEmpty() && table[hashFunction(key)].getHead()->getNext() != nullptr){
         int index = hashFunction(key);
         Node<int> *temp;
         temp = table[index].getHead()->getNext();

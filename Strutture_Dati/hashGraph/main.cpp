@@ -2,21 +2,14 @@
 using namespace std;
 
 int main(){
-    hashGraph hashgraph(100);
-    for (size_t i = 0; i < 100; i++)
-    {
-        hashgraph.hashInsert(i, new verticeGrafo(i));
-    }
-    for (size_t i = 0; i < 100; i++)
-    {
-        hashgraph.hashInsert(i, new verticeGrafo(i));
-        hashgraph.hashInsert(i, new verticeGrafo(i));
-        hashgraph.hashInsert(i, new verticeGrafo(i));
-        hashgraph.hashInsert(i, new verticeGrafo(i));
-        
-    }
-    hashgraph.getT(4).printList();
-    // hashgraph.displayHash();
+    hashGraph hashgraph(3);
+    verticeGrafo a(1);
+    verticeGrafo b(2);
+    hashgraph.hashInsert(0,&a);
+    hashgraph.hashInsert(0,&b);
+    cout << hashgraph.hashSearch(1) << endl;
+    a.aggiungiArco(&b);
+   
     
     
 }
