@@ -45,7 +45,7 @@ public:
             if (tmp == tmplist->getTail()){
                 return false;
             }
-            tmp->getNext();
+            tmp = tmp->getNext();
         }
         return true;
     }

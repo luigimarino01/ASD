@@ -45,7 +45,7 @@ public:
             if (tmp == tmplist->getTail()){
                 return false;
             }
-            tmp->getNext();
+            tmp = tmp->getNext();
         }
         return true;
     }
@@ -63,7 +63,7 @@ public:
            if (tmp->getData() == tmplist->getTail()->getData()){
                return false;
            }
-           tmp->getNext()->getData();
+          tmp = tmp->getNext();
        }
        tmplist->deleteNode(tmp);
        return true;
