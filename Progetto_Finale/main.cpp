@@ -28,7 +28,7 @@ int main()
     bool menuOn = true;
     while (menuOn != false)
     {
-        cout << "*******************************\n";
+        cout << "\n*******************************\n";
         cout << " 1 - Aggiungi un arco tra due vertici.\n";
         cout << " 2 - Rimuovi un arco tra due vertici.\n";
         cout << " 3 - Trova un arco tra due vertici.\n";
@@ -49,7 +49,7 @@ int main()
             if (hg.addEdge(i, j))
                 cout << "Arco aggiunto con successo." << endl;
             else
-                cout << "Non e stato possibile aggiungere l'arco. (NODI INESISTENTI O ARCO INESISTENTE)" << endl;
+                cout << "Non e stato possibile aggiungere l'arco. (NODI INESISTENTI O ARCO GIA ESISTENTE)" << endl;
 
             break;
         case 2:
@@ -68,6 +68,7 @@ int main()
         case 4:
         cout << "Inserisci il nodo sorgente dal quale far partire la DFS ";
         cin >> i;
+        hg.DFS_init(i);
         hg.DFS(i);
         
             break;

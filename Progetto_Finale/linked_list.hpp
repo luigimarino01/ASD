@@ -47,7 +47,7 @@ template<typename T>
 Node<T>* linkedList<T>::getTail(){
 
     if (head==nullptr)
-        cout<<"Lista vuota"<<endl;
+        cout<<"";
 
     else if (head->getNext()==nullptr)
         return head;
@@ -137,9 +137,3 @@ void linkedList<T>::printList(){
 
     }
 }
-
-
-
-
-
-
