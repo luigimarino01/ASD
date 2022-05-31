@@ -1,12 +1,19 @@
 #include <iostream>
 #include <vector>
+#include <limits>
 #include "linked_list.hpp"
 using namespace std;
 
 class verticeGrafo
 {
+
     linkedList<verticeGrafo *> *adj;
+    verticeGrafo *padre;
     int data = 0;
+    int tempoiniziovisita;
+    int tempofinevisita;
+    int colore;
+
 
 public:
     verticeGrafo(int value)
@@ -14,11 +21,29 @@ public:
 
         this->data = value;
         adj = new linkedList<verticeGrafo *>;
+        this->padre = nullptr;
+        this->colore = 0;
+        tempoiniziovisita = std::numeric_limits<int>::max();
+        tempofinevisita = std::numeric_limits<int>::max();
 
     }
 
     void setData(int data){this->data = data;}
     int getData(){return this->data;}
+
+    void setColor(int c){this->colore = c;}
+    bool getColore(){return this->colore;}
+
+    void setPadre(verticeGrafo *p){this->padre = p;}
+    verticeGrafo* getpadre(){return this->padre;}
+
+    void setTempoInizioVisita(int tempo){this->tempoiniziovisita = tempo;}
+    int getTempoInizioVisita(){return this->tempoiniziovisita;}
+
+    void setTempoFineVisita(int tempo){this->tempofinevisita = tempo;}
+    int getTempoFineVisita(){return this->tempofinevisita;}
+
+
 
      bool aggiungiArco(verticeGrafo *destinazione)
     {
