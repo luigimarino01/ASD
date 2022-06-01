@@ -1,4 +1,4 @@
-//STRUTTURA DATI GRAFO INTERAMENTE SCRITTA DA LUIGI MARINO, TRAMITE DUE CLASSI, I VERTICI DEL GRAFO E IL GRAFO STESSO.
+// STRUTTURA DATI GRAFO INTERAMENTE SCRITTA DA LUIGI MARINO, TRAMITE DUE CLASSI, I VERTICI DEL GRAFO E IL GRAFO STESSO.
 
 #include <iostream>
 #include <vector>
@@ -6,7 +6,7 @@
 #include "linked_list.hpp"
 using namespace std;
 
-//CLASSE VERTICE DEL GRAFO
+// CLASSE VERTICE DEL GRAFO
 class verticeGrafo
 {
     linkedList<verticeGrafo *> *adj;
@@ -17,8 +17,8 @@ class verticeGrafo
     int colore;
 
 public:
-//COSTRUTTORE DEL VERTICE DEL GRAFO, INSERISCE IL VALORE DEL GRAFO, CREA LA SUA LISTA DI ADIACENZA MEDIANTE LA LINKED LIST IMPLEMENTATA IN PRECEDENZA 
-// E IMPOSTA IL COLORE A ZERO (BIANCO)
+    // COSTRUTTORE DEL VERTICE DEL GRAFO, INSERISCE IL VALORE DEL GRAFO, CREA LA SUA LISTA DI ADIACENZA MEDIANTE LA LINKED LIST IMPLEMENTATA IN PRECEDENZA
+    //  E IMPOSTA IL COLORE A ZERO (BIANCO)
     verticeGrafo(int value)
     {
 
@@ -26,14 +26,12 @@ public:
         adj = new linkedList<verticeGrafo *>;
         this->colore = 0;
     }
-//METODI DEL VERTICE DEL GRAFO
+    // METODI DEL VERTICE DEL GRAFO
     void setData(int data) { this->data = data; }
     int getData() { return this->data; }
 
     void setColor(int c) { this->colore = c; }
     bool getColore() { return this->colore; }
-
-
 
     bool aggiungiArco(verticeGrafo *destinazione)
     {
@@ -105,19 +103,19 @@ public:
     }
 };
 
-//CLASSE GRAFO, UTILIZZA UN VECTOR DI VERTICI DEL GRAFO
+// CLASSE GRAFO, UTILIZZA UN VECTOR DI VERTICI DEL GRAFO
 class Grafo
 {
 
     vector<verticeGrafo *> *listaVertici;
 
 public:
-//COSTRUTTORE DEL GRAFO CHE CREA LA LISTA DEI VERTICI
+    // COSTRUTTORE DEL GRAFO CHE CREA LA LISTA DEI VERTICI
     Grafo()
     {
         listaVertici = new vector<verticeGrafo *>;
     }
-    //METODI DEL GRAFO
+    // METODI DEL GRAFO
     void aggiungiVertice(verticeGrafo *vertice) { listaVertici->push_back(vertice); }
     verticeGrafo *getVertice(int numeroVertice) { return listaVertici->at(numeroVertice); }
 

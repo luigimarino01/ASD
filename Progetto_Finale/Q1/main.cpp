@@ -1,3 +1,15 @@
+/*Si vuole realizzare la struttura dati HashGraph che consenta di memorizzare un grafo
+orientato in una hash table. Ogni nodo del grafo viene memorizzato in una cella della
+hash table insieme alla lista di adiacenza. Progettare ed implementare una struttura
+dati che, dato un file di input contenente il grafo, costruisca HashGraph
+corrispondente e consenta di effettuare le seguenti operazioni: AddEdge(i,j),
+RemoveEdge(i,j), FindEdge(i,j) e DFS(s). Il file di input contiene nel primo rigo due
+numeri interi, 0<=N<=1000 e 0<=M<=1000, separati da uno spazio che
+rappresentano rispettivamente il numero di nodi ed il numero di archi. I successivi M
+righi contengono due numeri interi separati da uno spazio che rappresentano il nodo
+sorgente ed il nodo destinazione. Dotare il programma di un menu da cui sia possibile
+richiamare le suddette operazioni.
+*/
 #include <iostream>
 #include "hashGraph.hpp"
 #include <fstream>
@@ -66,11 +78,11 @@ int main()
             break;
 
         case 4:
-        cout << "Inserisci il nodo sorgente dal quale far partire la DFS ";
-        cin >> i;
-        hg.DFS_init(i);
-        hg.DFS(i);
-        
+            cout << "Inserisci il nodo sorgente dal quale far partire la DFS ";
+            cin >> i;
+            hg.DFS_init(i);
+            hg.DFS(i);
+
             break;
         case 3:
             cout << "Inserisci il primo vertice ";
