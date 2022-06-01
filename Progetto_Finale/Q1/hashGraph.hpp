@@ -1,3 +1,5 @@
+//CLASSE CHE CONTIENE UN GRAFO ALL'INTERNO DI UNA HASHTABLE, INTERAMENTE SCRITTA DA LUIGI MARINO PER IL PROGETTO 2021/2022 DI ALGORITMI E STRUTTURE DATI
+//LA CLASSE IMMAGAZZINA UN GRAFO ALL'INTERNO DI UNA HASHTABLE, ANDANDO A RICHIAMARE LE CLASSI SCRITTE E ILLUSTRATE IN PRECEDENZA ALL'INTERNO DELLA STESSA CARTELLA
 #include "hashTable.hpp"
 #include <bits/stdc++.h>
 class hashGraph
@@ -13,15 +15,14 @@ public:
     bool findEdge(int i, int j);
     void DFS_init(int sorgente);
     void DFS(int sorgente);
-    void DFS_visit(verticeGrafo *sorgente);
-
 };
-
+//COSTRUTTORE CHE CREA UNA HASHTABLE, CHE A SUA VOLTA IMMAGAZZINA VERTICI DEL GRAFO
 hashGraph::hashGraph(int n)
 {
     this->tavola = new hashTable(n);
     this->dim = n;
 }
+//METODO CHE AGGIUNGE UN ARCO TRA DUE VERTICI, RICHIAMANDO SIA METODI DELLA HASHTABLE, SIA METODI DELLA LINKED LIST CONTENUTA NELLA HASHTABLE
 bool hashGraph::addEdge(int i, int j)
 {
     if (i < dim && i >= 0 && j < dim && j >= 0 && !(this->findEdge(i, j)))
@@ -31,7 +32,7 @@ bool hashGraph::addEdge(int i, int j)
     }
     return false;
 }
-
+//METODO CHE RIMUOVE UN ARCO TRA DUE VERTICI, RICHIAMANDO SIA METODI DELLA HASHTABLE, SIA METODI DELLA LINKED LIST CONTENUTA NELLA HASHTABLE
 bool hashGraph::removeEdge(int i, int j)
 {
     if (i < dim && i >= 0 && j < dim && j >= 0)
@@ -41,6 +42,7 @@ bool hashGraph::removeEdge(int i, int j)
     }
     return false;
 }
+//METODO CHE TROVA UN ARCO TRA DUE VERTICI, RICHIAMANDO SIA METODI DELLA HASHTABLE, SIA METODI DELLA LINKED LIST CONTENUTA NELLA HASHTABLE
 bool hashGraph::findEdge(int i, int j)
 {
     if (i < dim && i >= 0 && j < dim && j >= 0)
@@ -48,18 +50,16 @@ bool hashGraph::findEdge(int i, int j)
     return false;
 }
 
-int tempo = 0;
 
+//METODO CHE INIZIALIZZA TUTTI I COLORI DEI VERTICI, PER POTER PROCEDERE CON LA DFS
 void hashGraph::DFS_init(int sorgente)
 {
     for (int i = 0; i < dim; i++)
     {
         tavola->getTable(i).getHead()->getData()->setColor(0);
-        tavola->getTable(i).getHead()->getData()->setTempoInizioVisita(tempo);
-        tavola->getTable(i).getHead()->getData()->setTempoFineVisita(tempo);
     }
 }
-
+//METODO CHE EFFETTUA LA DFS DELL'HASHGRAPH, SCEGLIENDO UN VERTICE SORGENTE DAL QUALE PARTIRE
 void hashGraph::DFS(int sorgente)
 {
     tavola->getTable(sorgente).getHead()->getData()->setColor(1);

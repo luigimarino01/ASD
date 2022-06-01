@@ -47,7 +47,7 @@ template<typename T>
 Node<T>* linkedList<T>::getTail(){
 
     if (head==nullptr)
-        cout<<"";
+        cout<<"Lista vuota"<<endl;
 
     else if (head->getNext()==nullptr)
         return head;
@@ -83,7 +83,6 @@ void linkedList<T>::insertNode(T data){
         newNode->setPrev(temp);
     }
 }
-
 
 template<typename T>
 void linkedList<T>::push_front(T data){
@@ -137,3 +136,9 @@ void linkedList<T>::printList(){
 
     }
 }
+
+
+
+
+
+
