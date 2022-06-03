@@ -108,6 +108,7 @@ class Grafo
 {
 
     vector<verticeGrafo *> *listaVertici;
+    int numeroVertici;
     void DFS_VISIT(verticeGrafo *sorgente)
     {
         sorgente->setColor(1);
@@ -134,13 +135,32 @@ class Grafo
 
 public:
     // COSTRUTTORE DEL GRAFO CHE CREA LA LISTA DEI VERTICI
-    Grafo()
+    Grafo(int n)
     {
-        listaVertici = new vector<verticeGrafo *>;
+        this->numeroVertici = n;
+        listaVertici = new vector<verticeGrafo *>(numeroVertici);
+        for (int i = 0; i < numeroVertici; i++)
+        {
+            listaVertici->at(i) = new verticeGrafo(i);
+        }
+        
     }
     // METODI DEL GRAFO
     void aggiungiVertice(verticeGrafo *vertice) { listaVertici->push_back(vertice); }
     verticeGrafo *getVertice(int numeroVertice) { return listaVertici->at(numeroVertice); }
+
+
+    void aggiungiArco(int i, int j){
+        verticeGrafo* tmp = getVertice(i);
+        verticeGrafo* dest = getVertice(j);
+        tmp->aggiungiArco(dest);
+    }
+
+    void rimuoviArco(int i, int j){
+        verticeGrafo* tmp = getVertice(i);
+        verticeGrafo* dest = getVertice(j);
+        tmp->rimuoviArco(dest);
+    }
 
     int count = 0;
 
@@ -151,7 +171,7 @@ public:
                 count++;
             }
         }
-        return count;
+        return count-1;
     }
 
 

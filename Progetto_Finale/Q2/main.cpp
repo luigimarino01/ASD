@@ -3,22 +3,29 @@ tutti gli abitanti. È necessario però terminare la rete idrica in modo che tut
 ricevano l’acqua. A tal fine viene convocato un famoso informatico a cui viene
 fornita la piantina delle città con l’indicazione delle condotte attualmente presenti,
 con il compito di determinare il minimo numero di condotte da costruire.*/
+#include <iostream>
 #include "grafo.hpp"
-int main(){
-    Grafo g;
-    verticeGrafo a(0);
-    verticeGrafo b(1);
-    verticeGrafo c(2);
-    verticeGrafo d(3);
+#include <fstream>
+#include <string>
 
-    g.aggiungiVertice(&a);
-    g.aggiungiVertice(&b);
-    g.aggiungiVertice(&c);
-    g.aggiungiVertice(&d);
-
-    d.aggiungiArco(&c);
-    c.aggiungiArco(&b);
-
-    g.DFS();
-    cout << g.risolvi();
+    int main()
+{
+    ifstream file;
+    file.open("file1.txt");
+    string str1, str2;
+    getline(file, str1);
+    int var1, var2, N, M, count = 0;
+    size_t pos;
+    N = stoi(str1, &pos);
+    M = stoi(str1.substr(pos));
+    Grafo gr(N + 1);
+    while (getline(file, str1) && count < M)
+    {
+        count++;
+        var1 = stoi(str1, &pos);
+        var2 = stoi(str1.substr(pos));
+        gr.aggiungiArco(var1, var2);
+    }
+    gr.DFS();
+    cout << gr.risolvi();
 }
