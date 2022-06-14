@@ -10,10 +10,7 @@ using namespace std;
 class verticeGrafo
 {
     linkedList<verticeGrafo *> *adj;
-    verticeGrafo *padre;
     int data = 0;
-    int tempoiniziovisita;
-    int tempofinevisita;
     int colore;
 
 public:

@@ -19,9 +19,11 @@ using namespace std;
 
 int main()
 {
-    ifstream file;
+    hashGraph h(5);
+    h.addEdge(0,1);
+    /*ifstream file;
     file.open("file1.txt");
-    string str1, str2;
+    string str1;
     getline(file, str1);
     int var1, var2, N, M, count = 0;
     size_t pos;
@@ -106,5 +108,5 @@ int main()
             cin >> choice;
             break;
         }
-    }
+    }*/
 }
